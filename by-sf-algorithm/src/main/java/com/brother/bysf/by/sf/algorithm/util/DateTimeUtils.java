@@ -63,7 +63,7 @@ public class DateTimeUtils {
             System.out.println("zoneOffset==" + zoneOffset);
         }
 
-        ZonedDateTime utcDateTime = Instant.now().atZone(ZoneId.of("UTC")).withMinute(0).withSecond(0).withNano(0);
+        ZonedDateTime utcDateTime = Instant.now().atZone(ZoneId.of("UTC")).withSecond(0).withNano(0);
         System.out.println("utc time:" + utcDateTime);
         for (long hourZoneOffset : getHourTimeZoneRawOffsetsByUtcTime(utcDateTime)){
             System.out.println("hourZoneOffset==" + hourZoneOffset);
