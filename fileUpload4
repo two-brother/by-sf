@@ -1,0 +1,32 @@
+@RequestMapping("/adminpostload/addInfo.do")
+	public String addIpInfo(Post post,MultipartFile file,HttpServletRequest request) throws IllegalStateException, IOException{
+		String photoName=file.getOriginalFilename();
+		if(photoName==""){
+			post.setPostImage("");
+			
+		}else{
+			String basePath=request.getSession().getServletContext().getRealPath("/photos");
+			File file2=new File(basePath);
+			if(!file2.exists()){
+				file2.mkdir();
+			}
+			File file3=new File(file2,photoName);
+			int i=0;
+			String subphotopath=photoName;
+			while(file3.exists()){
+				subphotopath=i+photoName;
+				file3=new File(file2,subphotopath);
+				i++;
+			}
+			String realPhotopath="/photos"+"/"+subphotopath;
+			post.setPostImage(realPhotopath);
+			file3.mkdir();
+			file.transferTo(file3);
+		}
+		
+		NoteResult result = postService.addInfo(post);
+		if(result.getStatus()==0){
+			return "admin/internship-post-back.html";
+		}
+		return "admin/internship-post-back.html";
+	}
