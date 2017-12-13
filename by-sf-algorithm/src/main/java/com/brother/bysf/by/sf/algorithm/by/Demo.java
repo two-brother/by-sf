@@ -6,6 +6,7 @@ package com.brother.bysf.by.sf.algorithm.by;
  * 要求：
  * 1. 空间复杂度尽量低，时间复杂度尽量不超过O(n*log(n))
  * 2. 如果这个数组非常庞大，单台机器的内存已经放不下了，怎么解决？
+ * @author by
  */
 public class Demo {
 
