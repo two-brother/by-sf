@@ -19,7 +19,7 @@
         <module>by-sf-algorithm</module>
         <module>by-sf-kafka-consumer</module>
         <module>by-sf-kafka-producer</module>
-        <module>by-sh-web</module>
+        <module>by-sf-web</module>
     </modules>
 
     <properties>

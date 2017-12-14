@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>by-sh-web</artifactId>
+    <artifactId>by-sf-web</artifactId>
     <packaging>jar</packaging>
 
     <dependencies>
