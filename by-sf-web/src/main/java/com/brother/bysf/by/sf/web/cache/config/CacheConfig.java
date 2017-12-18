@@ -6,8 +6,10 @@ import org.springframework.cache.ehcache.EhCacheCacheManager;
 import org.springframework.cache.ehcache.EhCacheManagerFactoryBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.redis.cache.RedisCacheManager;
+import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
@@ -20,24 +22,25 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 @EnableCaching
 public class CacheConfig {
 
-    @Bean
-    public RedisTemplate redisTemplateInit(RedisTemplate redisTemplate) {
-        //设置序列化Key的实例化对象
-        redisTemplate.setKeySerializer(new StringRedisSerializer());
-        //设置序列化Value的实例化对象
-        redisTemplate.setValueSerializer(new GenericJackson2JsonRedisSerializer());
-        return redisTemplate;
+    @Bean(name = "cacheManagerEh")
+    @Primary
+    public CacheManager cacheManagerEh() {
+        return new EhCacheCacheManager(ehCacheCacheManager().getObject());
     }
 
-    @Bean
-    public CacheManager cacheManager(RedisTemplate redisTemplate) {
+    @Bean(name = "cacheManagerRedis")
+    public CacheManager cacheManagerRedis(RedisTemplate redisTemplate) {
         RedisCacheManager cacheManager = new RedisCacheManager(redisTemplate);
         return cacheManager;
     }
 
     @Bean
-    public CacheManager cacheManager() {
-        return new EhCacheCacheManager(ehCacheCacheManager().getObject());
+    public RedisTemplate redisTemplateInit(RedisTemplate redisTemplate, JedisConnectionFactory connectionFactory) {
+        redisTemplate.setKeySerializer(new StringRedisSerializer());
+        redisTemplate.setValueSerializer(new GenericJackson2JsonRedisSerializer());
+
+        connectionFactory.setDatabase(6);
+        return redisTemplate;
     }
 
     @Bean

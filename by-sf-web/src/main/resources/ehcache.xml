@@ -1,4 +1,4 @@
 <ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="ehcache.xsd">
-    <cache name="user_info" maxEntriesLocalHeap="200" timeToLiveSeconds="60"></cache>
+    <cache name="user_info" maxEntriesLocalHeap="200" timeToLiveSeconds="10"></cache>
 </ehcache>
