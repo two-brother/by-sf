@@ -32,13 +32,10 @@ public class LCS {
         // backtracking arrays.
         for(ii = 1; ii <= n; ++ii) {
             for(jj = 1; jj <= m; ++jj) {
-
                 if( a.charAt(ii-1) == b.charAt(jj-1) ) {
                     S[ii][jj] = S[ii-1][jj-1] + 1;
                     R[ii][jj] = UP_AND_LEFT;
-                }
-
-                else {
+                } else {
                     S[ii][jj] = S[ii-1][jj-1] + 0;
                     R[ii][jj] = NEITHER;
                 }
@@ -67,13 +64,9 @@ public class LCS {
                 ii--;
                 jj--;
                 lcs[pos--] = a.charAt(ii);
-            }
-
-            else if( R[ii][jj] == UP ) {
+            } else if( R[ii][jj] == UP ) {
                 ii--;
-            }
-
-            else if( R[ii][jj] == LEFT ) {
+            } else if( R[ii][jj] == LEFT ) {
                 jj--;
             }
         }
@@ -87,6 +80,38 @@ public class LCS {
             String b = "AEFCDEBD";
             String s = LCSAlgorithm(a, b);
             System.out.println(s);
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+class DP{
+    public static int getLongestCommonSubsequence(String a, String b){
+        int m = a.length();
+        int n = b.length();
+        int[][] dp = new int[m+1][n+1];
+
+        for(int i=0; i<=m; i++){
+            for(int j=0; j<=n; j++){
+                if(i==0 || j==0){
+                    dp[i][j]=0;
+                }else if(a.charAt(i-1)==b.charAt(j-1)){
+                    dp[i][j] = 1 + dp[i-1][j-1];
+                }else{
+                    dp[i][j] = Math.max(dp[i-1][j], dp[i][j-1]);
+                }
+            }
+        }
+        return dp[m][n];
+    }
+
+    public static void main(String args[]) {
+        try {
+            String a = "ABCDEFABD";
+            String b = "AEFCDEBD";
+            int score = getLongestCommonSubsequence(a, b);
+            System.out.println(score);
         }
         catch(Exception e) {
             e.printStackTrace();
