@@ -20,6 +20,7 @@
         <module>by-sf-kafka-consumer</module>
         <module>by-sf-kafka-producer</module>
         <module>by-sf-web</module>
+        <module>by-sf-search</module>
     </modules>
 
     <properties>
