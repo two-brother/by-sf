@@ -6,15 +6,12 @@ import java.io.File;
  * @author sk-shifanwen
  * @date 2018/1/31
  */
-public class JarToolUtil
-{
+public class JarToolUtil {
     /**
      * 获取jar绝对路径
-     *
      * @return jar path
      */
-    public static String getJarPath()
-    {
+    public static String getJarPath() {
         File file = getFile();
         if (file == null) {
             return null;
@@ -24,11 +21,9 @@ public class JarToolUtil
 
     /**
      * 获取jar目录
-     *
      * @return jar dir
      */
-    public static String getJarDir()
-    {
+    public static String getJarDir() {
         File file = getFile();
         if (file == null) {
             return null;
@@ -38,11 +33,9 @@ public class JarToolUtil
 
     /**
      * 获取jar包名
-     *
      * @return jar name
      */
-    public static String getJarName()
-    {
+    public static String getJarName() {
         File file = getFile();
         if (file == null) {
             return null;
@@ -52,20 +45,13 @@ public class JarToolUtil
 
     /**
      * 获取当前Jar文件
-     *
-     * @return
+     * @return File
      */
-    private static File getFile()
-    {
-        // 关键是这行...
+    private static File getFile() {
         String path = JarToolUtil.class.getProtectionDomain().getCodeSource().getLocation().getFile();
-        try
-        {
-            // 转换处理中文及空格
+        try {
             path = java.net.URLDecoder.decode(path, "UTF-8");
-        }
-        catch (java.io.UnsupportedEncodingException e)
-        {
+        } catch (java.io.UnsupportedEncodingException e) {
             return null;
         }
         return new File(path);
