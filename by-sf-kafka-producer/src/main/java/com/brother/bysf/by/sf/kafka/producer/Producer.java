@@ -20,6 +20,7 @@ import org.apache.kafka.clients.producer.Callback;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.clients.producer.RecordMetadata;
+import org.apache.kafka.common.config.TopicConfig;
 
 import java.util.Properties;
 import java.util.concurrent.ExecutionException;
@@ -39,6 +40,7 @@ public class Producer extends Thread {
         props.put("client.id", "DemoProducer");
         props.put("key.serializer", "org.apache.kafka.common.serialization.IntegerSerializer");
         props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
+        props.put(TopicConfig.RETENTION_MS_CONFIG,5000);
         producer = new KafkaProducer<>(props);
         this.topic = topic;
         this.isAsync = isAsync;

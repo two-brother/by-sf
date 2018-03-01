@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -24,9 +25,13 @@ public class EsOpt {
     private static JestClient client;
 
     static {
+        List<String> nodes = new LinkedList<String>();
+        nodes.add("http://10.10.13.51:9200");
+
         JestClientFactory factory = new JestClientFactory();
         factory.setHttpClientConfig(
-                new HttpClientConfig.Builder("http://10.10.13.51:9200")
+                new HttpClientConfig.Builder(nodes)
+                        .multiThreaded(true)
                         .defaultCredentials("elastic", "S2Lylw_072nyLQxH@c3C")
                         .build()
         );

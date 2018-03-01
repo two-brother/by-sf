@@ -17,8 +17,8 @@
 package com.brother.bysf.by.sf.kafka.consumer;
 
 public class KafkaProperties {
-    public static final String TOPIC = "topic_test";
-    public static final String KAFKA_SERVER_URL = "localhost";
+    public static final String TOPIC = "retention_ms_test_6";
+    public static final String KAFKA_SERVER_URL = "10.10.13.51";
     public static final int KAFKA_SERVER_PORT = 9092;
 
     private KafkaProperties() {}

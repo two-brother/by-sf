@@ -21,6 +21,7 @@ import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
+import org.apache.kafka.common.config.TopicConfig;
 
 import java.util.Collections;
 import java.util.Properties;
@@ -43,6 +44,7 @@ public class Consumer extends ShutdownableThread {
         props.put(ConsumerConfig.MAX_POLL_RECORDS_CONFIG, "100");
         props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.IntegerDeserializer");
         props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringDeserializer");
+        props.put(TopicConfig.RETENTION_MS_CONFIG,5000);
 
         consumer = new KafkaConsumer<>(props);
         this.topic = topic;
