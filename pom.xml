@@ -21,6 +21,8 @@
         <module>by-sf-kafka-producer</module>
         <module>by-sf-web</module>
         <module>by-sf-search</module>
+        <module>by-sf-spark-mongo</module>
+        <module>by-sf-common</module>
     </modules>
 
     <properties>
