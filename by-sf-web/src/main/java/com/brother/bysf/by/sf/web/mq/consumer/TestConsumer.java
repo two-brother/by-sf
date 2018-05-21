@@ -18,7 +18,7 @@ import java.util.List;
 public class TestConsumer {
     private static final Logger LOGGER = LoggerFactory.getLogger(TestConsumer.class);
 
-    @KafkaListener(group = "${spring.kafka.consumer.group-id}",
+    @KafkaListener(groupId = "${spring.kafka.consumer.group-id}",
             topics = "${by.sf.topic.test}",
             containerFactory = "kafkaListenerContainerFactory")
     public void onMessage(List<ConsumerRecord<Bytes, Bytes>> consumerRecords, Acknowledgment ack) {

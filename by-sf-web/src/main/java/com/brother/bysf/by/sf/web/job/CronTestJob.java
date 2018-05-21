@@ -21,6 +21,9 @@ public class CronTestJob implements SimpleJob {
         LOGGER.info("getShardingParameter: " + shardingContext.getShardingParameter());
         LOGGER.info("getShardingItem: " + shardingContext.getShardingItem());
         LOGGER.info("getShardingTotalCount: " + shardingContext.getShardingTotalCount());
+    }
+
+    public static void sleep() {
         try {
             LOGGER.info("sleep 4 SECONDS");
             TimeUnit.SECONDS.sleep(4);

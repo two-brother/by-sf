@@ -18,7 +18,7 @@ package com.brother.bysf.by.sf.kafka.producer;
 
 public class KafkaProperties {
     public static final String TOPIC = "retention_ms_test_666";
-    public static final String KAFKA_SERVER_URL = "10.10.13.51";
+    public static final String KAFKA_SERVER_URL = "10.10.21.101";
     public static final int KAFKA_SERVER_PORT = 9092;
     public static final String TOPIC_CONFIG_RETENTION_MS_CONFIG = "5000";
 

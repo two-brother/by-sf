@@ -28,7 +28,7 @@ public class CronTestJobConfig {
 
     @Bean(initMethod = "init")
     public JobScheduler createjobSchedular(final CronTestJob cronTestJob) {
-        String cron = "0/5 * * * * ?";
+        String cron = "0 3/15 * * * ?";
         int shareTotalCount = 1;
 
         //job配置
