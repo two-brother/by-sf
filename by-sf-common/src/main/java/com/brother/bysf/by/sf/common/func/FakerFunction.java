@@ -1,4 +1,4 @@
-package com.brother.bysf.by.sf.common.util;
+package com.brother.bysf.by.sf.common.func;
 
 import com.github.javafaker.Faker;
 

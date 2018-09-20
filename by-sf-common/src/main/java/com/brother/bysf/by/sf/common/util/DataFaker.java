@@ -1,5 +1,7 @@
 package com.brother.bysf.by.sf.common.util;
 
+import com.brother.bysf.by.sf.common.func.FakerFunction;
+
 import java.util.function.Supplier;
 
 /**
